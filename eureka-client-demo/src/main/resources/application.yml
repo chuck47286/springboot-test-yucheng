@@ -1,9 +1,24 @@
 server:
-  port: 8086
+  port: 8088
 spring:
   application:
     name: eureka-client-demo
 eureka:
   client:
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/dashboard/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 6
+    instance-id: ${spring.application.name}:${server.port}
+
+ribbon:
+  #(重试负载均衡其他实例最大重试次数,不含首次实例)
+  MaxAutoRetriesNextServer: 1
+  #(同一实例最大重试次数,不含首次调用)
+  MaxAutoRetries: 0
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
