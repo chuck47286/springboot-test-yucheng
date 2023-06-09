@@ -5,3 +5,14 @@ server:
 spring:
   application:
     name: userService
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/dashboard/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 6
+    instance-id: ${spring.application.name}:${server.port}
