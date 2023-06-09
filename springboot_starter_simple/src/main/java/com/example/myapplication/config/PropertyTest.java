@@ -9,17 +9,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class PropertyTest {
 
-    @Value("${test.valueA}")
-    private String testValueA;
+//    @Value("${test.valueA}")
+//    private String testValueA;
 
     @TimeCostMonitorAnnotation
     public String getTestValueA() {
-        log.info("[test.valueA] {}", testValueA);
+//        log.info("[test.valueA] {}", testValueA);
         try {
             Thread.sleep(650);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return testValueA;
+        return "";
+//        return testValueA;
     }
 }

@@ -5,10 +5,33 @@ management:
     web:
       exposure:
         include=*:
+spring:
+  application:
+    name: example-core-module
 sentinel:
   flow:
     rule:
       "[{\"clusterConfig\":{\"acquireRefuseStrategy\":0,\"clientOfflineTime\":2000,\"fallbackToLocalWhenFail\":true,\"resourceTimeout\":2000,\"resourceTimeoutStrategy\":0,\"sampleCount\":10,\"strategy\":0,\"thresholdType\":0,\"windowIntervalMs\":1000},\"clusterMode\":false,\"controlBehavior\":0,\"count\":5,\"grade\":1,\"limitApp\":\"default\",\"maxQueueingTimeMs\":500,\"resource\":\"testC\",\"strategy\":0,\"warmUpPeriodSec\":10,\"paramFlowItemList\":[{\"paramIdx\":1,\"fieldName\":\"name\",\"burstCount\":1,\"maxQueueingTimeMs\":500,\"paramFlowItemList\":[],\"controlBehavior\":1,\"grade\":1,\"strategy\":0}]}]"
-test:
-  valueA:
-    "[123]"
+feign:
+  client:
+    config:
+      userService:
+        logger-level: basic
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/dashboard/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 6
+    instance-id: ${spring.application.name}:${server.port}
+ribbon:
+  #(重试负载均衡其他实例最大重试次数,不含首次实例)
+  MaxAutoRetriesNextServer: 1
+  #(同一实例最大重试次数,不含首次调用)
+  MaxAutoRetries: 0
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
