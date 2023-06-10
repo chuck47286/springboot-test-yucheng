@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import com.example.myapplication.config.FeignConfiguration;
 import com.example.myapplication.infrastructure.OrderQueue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Import;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
@@ -19,7 +17,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableEurekaClient
 @EnableFeignClients
 @SpringBootApplication
-@Import(FeignConfiguration.class)
 @EnableSwagger2
 public class Application implements ApplicationRunner {
 

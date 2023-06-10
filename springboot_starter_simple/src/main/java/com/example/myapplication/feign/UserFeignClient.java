@@ -1,8 +1,6 @@
 package com.example.myapplication.feign;
 
-import com.example.myapplication.config.FeignConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,8 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @FeignClient(
         contextId = "feignClient",
-        name = "userService",
-        configuration = FeignConfiguration.class
+        name = "userService"
 )
 public interface UserFeignClient {
 

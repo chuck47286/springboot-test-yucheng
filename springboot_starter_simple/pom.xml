@@ -55,17 +55,17 @@
 
         <!--MapStruct依赖-->
         <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-jdk8 -->
-<!--        <dependency>-->
-<!--            <groupId>org.mapstruct</groupId>-->
-<!--            <artifactId>mapstruct-jdk8</artifactId>-->
-<!--            <version>1.0.0.Final</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.mapstruct</groupId>-->
-<!--            <artifactId>mapstruct-processor</artifactId>-->
-<!--            <version>1.0.0.Final</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mapstruct</groupId>-->
+        <!--            <artifactId>mapstruct-jdk8</artifactId>-->
+        <!--            <version>1.0.0.Final</version>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mapstruct</groupId>-->
+        <!--            <artifactId>mapstruct-processor</artifactId>-->
+        <!--            <version>1.0.0.Final</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -86,12 +86,12 @@
             <scope>provided</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.mapstruct</groupId>-->
-<!--            <artifactId>mapstruct-mapping-processor</artifactId>-->
-<!--            <version>1.4.2.Final</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mapstruct</groupId>-->
+        <!--            <artifactId>mapstruct-mapping-processor</artifactId>-->
+        <!--            <version>1.4.2.Final</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
 
         <!--   sentinel限流     -->
         <dependency>
@@ -142,6 +142,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--   feign连接池     -->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-httpclient</artifactId>
+            <version>10.1.0</version>
         </dependency>
 
 

@@ -12,11 +12,6 @@ sentinel:
   flow:
     rule:
       "[{\"clusterConfig\":{\"acquireRefuseStrategy\":0,\"clientOfflineTime\":2000,\"fallbackToLocalWhenFail\":true,\"resourceTimeout\":2000,\"resourceTimeoutStrategy\":0,\"sampleCount\":10,\"strategy\":0,\"thresholdType\":0,\"windowIntervalMs\":1000},\"clusterMode\":false,\"controlBehavior\":0,\"count\":5,\"grade\":1,\"limitApp\":\"default\",\"maxQueueingTimeMs\":500,\"resource\":\"testC\",\"strategy\":0,\"warmUpPeriodSec\":10,\"paramFlowItemList\":[{\"paramIdx\":1,\"fieldName\":\"name\",\"burstCount\":1,\"maxQueueingTimeMs\":500,\"paramFlowItemList\":[],\"controlBehavior\":1,\"grade\":1,\"strategy\":0}]}]"
-feign:
-  client:
-    config:
-      userService:
-        logger-level: basic
 eureka:
   client:
     register-with-eureka: true
@@ -29,9 +24,21 @@ eureka:
     lease-expiration-duration-in-seconds: 6
     instance-id: ${spring.application.name}:${server.port}
 ribbon:
+  #  随机算法
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
   #(重试负载均衡其他实例最大重试次数,不含首次实例)
-  MaxAutoRetriesNextServer: 1
+  MaxAutoRetriesNextServer: 0
   #(同一实例最大重试次数,不含首次调用)
-  MaxAutoRetries: 0
+  MaxAutoRetries: 2
   ReadTimeout: 3000
   ConnectTimeout: 3000
+  MaxTotalConnections: 100
+  MaxConnectionsPerHost: 50
+feign:
+  httpclient:
+    # 让feign使用Apache HTTPClient做请求，而不是默认的urlConnection
+    enabled: true
+    # feign最大连接数
+    max-connections: 200
+    # feign单个路径的最大连接数
+    max-connections-per-route: 50
