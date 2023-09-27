@@ -1,16 +1,22 @@
 package com.example.myapplication.aspect;
 
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
 
 @Slf4j
 @Aspect
 @Component
 public class PrintInterfaceTimeAspect {
+
+    @Value("${time-cost-monitor.enabled}")
+    private String properties;
 
 //    public PrintInterfaceTimeAspect() {
 //    }
@@ -37,14 +43,21 @@ public class PrintInterfaceTimeAspect {
 
     @Around(value = "printInterfacePointCut()")
     public Object aroundFeignInterfaceMethod(ProceedingJoinPoint joinPoint) throws Throwable {
+        if (!Boolean.parseBoolean(properties.trim())) {
+            return joinPoint.proceed();
+        }
         long start = System.currentTimeMillis();
         Object obj = null;
+        Object[] args = null;
         try {
+            // 获取方法参数
+            args = joinPoint.getArgs();
+            // 获取方法结果
             obj = joinPoint.proceed();
         }
         finally {
-            log.info("调用关联方的方法及耗时class name={} method={} cost={}",
-                    joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName(), System.currentTimeMillis() - start);
+            log.info("调用关联方的方法及耗时class name={}, time cost={}, [ method={}, request={}, result={} ]",
+                    joinPoint.getSignature().getDeclaringTypeName(),System.currentTimeMillis() - start, joinPoint.getSignature().getName(), JSONUtil.toJsonStr(args), JSONUtil.toJsonStr(obj));
         }
         return obj;
     }

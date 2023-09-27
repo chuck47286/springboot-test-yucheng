@@ -149,6 +149,12 @@
             <artifactId>feign-httpclient</artifactId>
             <version>10.1.0</version>
         </dependency>
+        <!--   开启springBoot configuration properties     -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
 
 
     </dependencies>

@@ -1,11 +1,12 @@
 package com.example.myapplication.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class TestConfiguration {
-
+//    @Autowired
+//    private BaseConfig baseConfig;
     /**
     @Bean
     public TestBean testBeanOne(TestBeanRequired testBeanRequired) {
@@ -19,9 +20,20 @@ public class TestConfiguration {
         return new TestBean();
     }
      */
-
-    @Bean
+    @Bean("testBeanthree")
     public TestBean testBeanThree() {
         return new TestBean();
     }
+
+    @Bean("testBeanFive")
+    public TestBean testBeanFive() {
+//        final int numberId = baseConfig.NUMBER_ID;
+        return new TestBean();
+    }
+
+//    @Bean("testBeanFour")
+//    public TestBean testBeanFour() {
+//        final int numberId = baseConfig.NUMBER_ID;
+//        return new TestBean();
+//    }
 }
