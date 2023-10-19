@@ -1,9 +1,7 @@
-package com.example.myapplication.config.dynamic;
+package com.example.myapplication.config;
 
 import com.example.myapplication.aspect.TimeCostMonitorAnnotation;
-import com.example.myapplication.config.MyBean;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 /**
  * @Author yucheng
@@ -25,19 +23,4 @@ public class BaseBean {
         }
         return bean;
     }
-//    public String getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(String address) {
-//        this.address = address;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
 }

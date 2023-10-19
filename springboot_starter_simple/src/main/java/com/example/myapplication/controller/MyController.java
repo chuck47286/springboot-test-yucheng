@@ -1,13 +1,11 @@
 package com.example.myapplication.controller;
 
-import com.example.myapplication.config.MyBean;
+import com.example.myapplication.config.BaseBean;
 import com.example.myapplication.config.dynamic.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -24,8 +22,8 @@ public class MyController {
     @Autowired
     private ConfigProps configProps;
 
-    @Autowired
-    private WebServiceDynamicConfigFactory factory;
+//    @Autowired
+//    private WebServiceDynamicConfigFactory factory;
 
 
 
@@ -43,10 +41,10 @@ public class MyController {
         return "200";
     }
 
-    @GetMapping("/getWebServiceDynamicConfigFactory")
-    public String getWebServiceDynamicConfigFactory() {
-        final Map<String, BaseBean> mapping = factory.getMapping();
-        System.out.println(mapping);
-        return "200";
-    }
+//    @GetMapping("/getWebServiceDynamicConfigFactory")
+//    public String getWebServiceDynamicConfigFactory() {
+//        final Map<String, BaseBean> mapping = factory.getMapping();
+//        System.out.println(mapping);
+//        return "200";
+//    }
 }
